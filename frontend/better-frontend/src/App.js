@@ -25,10 +25,11 @@ export default function App() {
           )
     })
   };
+
   const deleteTodo = (id) => {
     deleteTodoApi(id)
         .then(() => {
-          setTodos(todos.splice(todos.findIndex((todo) => todo.id === id), 0))
+            setTodos(todos.filter((item)=> item.id !== id ))
         })};
 
   useEffect(() => {
