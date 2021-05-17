@@ -5,6 +5,9 @@ function ToDoCard ({toDo, deleteTodo, updateTodo}) {
             <p>{toDo.description}</p>
             <p>{toDo.id}</p>
             <p>{toDo.status}</p>
+            <button onClick={() => deleteTodo(toDo.id)}>Delete</button>
+            <button>Details</button>
+            <button onClick={() => updateTodo(toDo)}>Advance</button>
         </div>
     )
 }
