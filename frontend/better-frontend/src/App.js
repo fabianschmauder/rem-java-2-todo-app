@@ -18,10 +18,10 @@ export default function App() {
     }
     updateTodoApi(todo)
         .then((newTodo) => {
-          setTodos(
-              todos.splice(
-                  todos.findIndex((todo) => todo.id === newTodo.id), 1, newTodo
-              )
+            const newTodos = todos.filter((item)=> item.id !== newTodo.id)
+            newTodos.push(newTodo)
+            setTodos(
+                newTodos
           )
     })
   };
