@@ -1,10 +1,10 @@
 import ToDoCard from "./ToDoCard";
 
-function ToDoCategorie ({todos, categorieName}) {
+function ToDoCategorie ({todos, categorieName, updateTodo, deleteTodo}) {
     return(
         <div>
             <p>{categorieName}</p>
-            {todos.map((todo) => <ToDoCard toDo={todo} key={todo.id}/>)}
+            {todos.map((todo) => <ToDoCard updateTodo={updateTodo} deleteTodo={deleteTodo} toDo={todo} key={todo.id}/>)}
         </div>
     )
 }

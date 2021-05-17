@@ -1,5 +1,5 @@
 
-function ToDoCard ({toDo}) {
+function ToDoCard ({toDo, deleteTodo, updateTodo}) {
     return(
         <div>
             <p>{toDo.description}</p>
