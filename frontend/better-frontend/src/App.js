@@ -2,13 +2,21 @@ import './App.css';
 import ToDoList from "./components/ToDoList";
 import {useEffect, useState} from "react";
 import {addTodoApi, deleteTodoApi, getTodosApi, updateTodoApi} from "./service/TodoApi";
+import Input from "./components/Input";
 
 
 export default function App() {
 
   const [todos, setTodos] = useState([{description: "des", id: "123", status:"OPEN"}]);
 
-  const addTodo = (description) => {addTodoApi({description: description, status:"OPEN"}).then((todo) => setTodos(todos.push(todo)))};
+  const addTodo = (description) => {
+      addTodoApi({description: description, status:"OPEN"})
+          .then((todo) => {
+              const newToDos =  todos.filter((item)=> true)
+              newToDos.push(todo)
+              setTodos(newToDos)
+          })};
+
   const advanceTodo = (todo) => {
     if (todo.status === "OPEN") {
       todo.status = "IN_PROGRESS";
@@ -41,8 +49,8 @@ export default function App() {
 
   return (
     <div className="App">
-      <ToDoList todos={todos} updateTodo={advanceTodo} deleteTodo={deleteTodo}/>
-
+        <ToDoList todos={todos} updateTodo={advanceTodo} deleteTodo={deleteTodo}/>
+        <Input addToDo={addTodo}/>
     </div>
   );
 }
